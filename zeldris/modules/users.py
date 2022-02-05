@@ -60,7 +60,7 @@ def get_user_id(username):
 
 def broadcast(update, context):
     if update.effective_message.reply_to_message:
-      to_send=update.effective_message.reply_to_message.id
+      to_send=update.effective_message.reply_to_message.message_id
     if not update.effective_message.reply_to_message:
       return update.effective_message.reply_text("Reply To Some Shit To Broadcast")
     chats = sql.get_all_chats() or []
