@@ -59,26 +59,32 @@ def get_user_id(username):
 
 
 def broadcast(update, context):
-    to_send = update.effective_message.text.split(None, 1)
-    if len(to_send) >= 2:
-        chats = sql.get_all_chats() or []
-        failed = 0
-        for chat in chats:
-            try:
-                context.bot.sendMessage(int(chat.chat_id), to_send[1])
-                sleep(0.1)
-            except TelegramError:
-                failed += 1
-                LOGGER.warning(
-                    "Couldn't send broadcast to %s, group name %s",
-                    str(chat.chat_id),
-                    str(chat.chat_name),
-                )
+    if update.effective_message.reply_to_message:
+      return to_send=update.effective_message.reply_to_message.id
+    if not update.effective_message.reply_to_message:
+      return update.effective_message.reply_text("Reply To Some Shit To Broadcast")
+    chats = sql.get_all_chats() or []
+    users = sql.get_all_users() or []
+    failed = 0
+    for chat in chats:
+      try:
+        context.bot.forwardMessage(chat_id=int(chat.chat_id), from_chat_id=update.effective_chat.id, message_id=to_send)
+        sleep(0.1)
+      except TelegramError:
+        failed += 1
+        LOGGER.warning("Couldn't send broadcast to %s, group name %s", str(chat.chat_id), str(chat.chat_name),)
+    
+    failed_user = 0
+    for user in users:
+      try:
+        context.bot.forwardMessage(chat_id=int(user.user_id), from_chat_id=update.effective_chat.id, message_id=to_send)
+            sleep(0.1)
+      except TelegramError:
+        failed_user += 1
+        LOGGER.warning("Couldn't send broadcast to %s, group name %s", str(user.user_id), str(user.username),)
 
-        update.effective_message.reply_text(
-            "Broadcast complete. {} groups failed to receive the message, probably "
-            "due to being kicked.".format(failed)
-        )
+
+    update.effective_message.reply_text("Broadcast complete. {} groups failed to receive the message, probably due to being kicked. {} users failed to receive the message, probably due to being banned.".format(failed, failed_user))
 
 
 def log_user(update, _):
