@@ -78,7 +78,7 @@ def broadcast(update, context):
     for user in users:
       try:
         context.bot.forwardMessage(chat_id=int(user.user_id), from_chat_id=update.effective_chat.id, message_id=to_send)
-            sleep(0.1)
+        sleep(0.1)
       except TelegramError:
         failed_user += 1
         LOGGER.warning("Couldn't send broadcast to %s, group name %s", str(user.user_id), str(user.username),)
