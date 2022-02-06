@@ -117,9 +117,7 @@ buttons = [
         InlineKeyboardButton(
             text="🎉 Updates", url="https://t.me/dabi_updates"),],
         [InlineKeyboardButton(
-            text="Wizard", url="https://t.me/Dabi_updates/9"),
-         InlineKeyboardButton(
-            text="Group", url="https://t.me/Villains_Association_1"),
+            text="Donate", url="https://ko-fi.com/Auramoon55"),
     ],
     [                    
         InlineKeyboardButton(
@@ -626,34 +624,12 @@ def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
     bot = context.bot
-    if chat.type == "private":
-        update.effective_message.reply_text(
-            DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
-        )
+    update.effective_message.reply_text(
+        "You can also donate to the person currently running me "
+        "[here]({})".format(DONATION_LINK),
+        parse_mode=ParseMode.MARKDOWN,
+    )
 
-        if OWNER_ID != 254318997 and DONATION_LINK:
-            update.effective_message.reply_text(
-                "You can also donate to the person currently running me "
-                "[here]({})".format(DONATION_LINK),
-                parse_mode=ParseMode.MARKDOWN,
-            )
-
-    else:
-        try:
-            bot.send_message(
-                user.id,
-                DONATE_STRING,
-                parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True,
-            )
-
-            update.effective_message.reply_text(
-                "I've PM'ed you about donating to my creator!"
-            )
-        except Unauthorized:
-            update.effective_message.reply_text(
-                "Contact me in PM first to get donation information."
-            )
 
 
 def migrate_chats(update: Update, context: CallbackContext):
