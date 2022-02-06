@@ -248,12 +248,6 @@ dispatcher = updater.dispatcher
 
 pbot = Client("ErenPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 
-def chutiyapa():
-    pbot = Client("ErenPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
-    pbot.run()
-    LOGGER.info("pbot run go brrr")
-    app = pbot.get_me()
-    LOGGER.info("info chori go brrr")
     
 
 DEV_USERS = list(DEV_USERS)
