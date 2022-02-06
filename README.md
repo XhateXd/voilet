@@ -1,16 +1,6 @@
-<p align="center">
-  <img src="https://telegra.ph/file/fed9ba09e9add9b197c21.png">
-<p>
+### Donation 
 
-<h1 align="center">
-    Violet Robot
-</h1>
-
-<p align="center">
-<a href="https://t.me/Villainevil_support"> <img src="https://img.shields.io/badge/Support-Chat-blue?&logo=telegram" alt="Support Chat" /> </a>
-<a href="https://t.me/Dabi_Updates"> <img src="https://img.shields.io/badge/Update-Channel-blue?&logo=telegram" alt="Update Channel" /> </a><br>
-<a href="https://t.me/Voilet_Probot"> <img src="https://img.shields.io/badge/Violet-Robot-blue?&logo=telegram" alt="Violet on Telegram" /> </a><br>
-</p>
+<a href="https://ko-fi.com/AuraMoon55" alt="Donate!"> <img src="https://aleen42.github.io/badges/src/paypal.svg" /> </a>
 
 
 **A modular Telegram Python bot running on python3 with a sqlalchemy, redis, telethon.**
