@@ -61,3 +61,4 @@ hentai
 heroku3
 geopy
 pySmartDL
+opencv-python-headless
