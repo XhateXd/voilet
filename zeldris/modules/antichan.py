@@ -44,14 +44,14 @@ async def message_handler(client: Client, update: Update, _, chats: dict):
                 )
             )
             await client.delete_messages(chat_id, message.id)
-            client.send_message(chat_id, f"Banned channel {channel_id} from group {chat_id}")
+            await client.send_message(chat_id, f"Banned channel {channel_id} from group {chat_id}")
 
             break
         except errors.FloodWait as e:
-            client.send_message(chat_id, f"{e}, retry after {e.x} seconds...")
+            await client.send_message(chat_id, f"{e}, retry after {e.x} seconds...")
             await asyncio.sleep(e.x)
         except errors.ChatAdminRequired:
             pass
         except:  # noqa
-            client.send_message(chat_id, "An exception occurred in message_handler")
+            await client.send_message(chat_id, "An exception occurred in message_handler")
             break
