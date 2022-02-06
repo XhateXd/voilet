@@ -626,7 +626,7 @@ def donate(update: Update, context: CallbackContext):
     bot = context.bot
     update.effective_message.reply_text(
         "You can also donate to the person currently running me "
-        "[here]({})".format(DONATION_LINK),
+        "[here](https://ko-fi.com/AuraMoon55)",
         parse_mode=ParseMode.MARKDOWN,
     )
 
