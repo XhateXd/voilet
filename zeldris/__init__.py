@@ -247,7 +247,7 @@ updater = tg.Updater(
 dispatcher = updater.dispatcher
 
 pbot = Client("ErenPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
-pbot.run()
+pbot.start()
     
 
 DEV_USERS = list(DEV_USERS)
