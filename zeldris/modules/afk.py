@@ -43,7 +43,8 @@ def afk(update, _):
     message = update.effective_message
     args = message.text.split(None, 1)
     user = update.effective_user
-
+    pico = message.reply_to_message.photo.file_id if message.reply_to_message.photo else None
+        
     if not user:  # ignore channels
         return
 
@@ -52,6 +53,7 @@ def afk(update, _):
 
     start_afk_time = time.time()
     reason = args[1] if len(args) >= 2 else "none"
+    reason = f"{reason}&&&{pico}" if pico else f"{reason}&&&"
     start_afk(user.id, reason)
     REDIS.set(f"afk_time_{user.id}", start_afk_time)
     fname = user.first_name
@@ -144,6 +146,8 @@ def reply_afk(update, context):
 def check_afk(update, _, user_id: int, fst_name: int, userc_id: int):
     if is_user_afk(user_id):
         reason = afk_reason(user_id)
+        reason = reason.split("&$¢&", maxplit=1)
+        pico = reason[1] else "none"
         since_afk = get_readable_time(
             (time.time() - float(REDIS.get(f"afk_time_{user_id}")))
         )
@@ -153,8 +157,10 @@ def check_afk(update, _, user_id: int, fst_name: int, userc_id: int):
             res = f"{fst_name} is AFK!\nLast seen: {since_afk}"
         else:
             res = f"{fst_name} is AFK!\nReason: {reason}\nLast seen: {since_afk}"
-
-        update.effective_message.reply_text(res)
+        if pico == "none":
+            update.effective_message.reply_text(res)
+        else:
+            update.effective_message.reply_photo(photo=pico, caption=res)
 
 
 def __gdpr__(user_id):
