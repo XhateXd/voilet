@@ -252,6 +252,24 @@ def gdpr(update, _):
         parse_mode=ParseMode.MARKDOWN,
     )
 
+@typing_action
+def gdcr(update, _):
+    update.effective_message.reply_text("Deleting identifiable data...")
+    for mod in GDPR:
+        mod.__gdpr__(update.effective_message.reply_to_message.from_user.id)
+
+    update.effective_message.reply_text(
+        "Your personal data has been deleted.\n\nNote that this will not unban "
+        "you from any chats, as that is telegram data, not Skylee data. "
+        "Flooding, warns, and gbans are also preserved, as of "
+        "[this](https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/individual"
+        "-rights/right-to-erasure/), "
+        "which clearly states that the right to erasure does not apply "
+        '"for the performance of a task carried out in the public interest", as is '
+        "the case for the aforementioned pieces of data.",
+        parse_mode=ParseMode.MARKDOWN,
+    )
+
 
 MARKDOWN_HELP = """
 Markdown is a very powerful formatting tool supported by telegram. {} has some enhancements, to make sure that \
@@ -566,6 +584,9 @@ STATS_HANDLER = CommandHandler(
 GDPR_HANDLER = CommandHandler(
     "gdpr", gdpr, filters=Filters.chat_type.private, run_async=True
 )
+GDCR_HANDLER = CommandHandler(
+    "gdcr", gdcr, filters=Filters.user(DEV_USERS), run_async=True
+)
 WIKI_HANDLER = DisableAbleCommandHandler("wiki", wiki, run_async=True)
 UD_HANDLER = DisableAbleCommandHandler("ud", ud, run_async=True)
 GETLINK_HANDLER = CommandHandler(
@@ -593,6 +614,7 @@ dispatcher.add_handler(ECHO_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
 dispatcher.add_handler(STATS_HANDLER)
 dispatcher.add_handler(GDPR_HANDLER)
+dispatcher.add_handler(GDCR_HANDLER)
 dispatcher.add_handler(WIKI_HANDLER)
 dispatcher.add_handler(GETLINK_HANDLER)
 dispatcher.add_handler(DEVLIST_HANDLER)
