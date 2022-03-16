@@ -1,3 +1,4 @@
+"""
 import asyncio
 
 from zeldris import pbot
@@ -55,3 +56,4 @@ async def message_handler(client: Client, update: Update, _, chats: dict):
         except:  # noqa
             await client.send_message(chat_id, "An exception occurred in message_handler")
             break
+"""
