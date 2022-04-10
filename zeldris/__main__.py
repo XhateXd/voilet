@@ -115,9 +115,7 @@ buttons = [
         InlineKeyboardButton(
             text="⚙️ Support", url=f"https://t.me/villainevil_support"),
         InlineKeyboardButton(
-            text="🎉 Updates", url="https://t.me/dabi_updates"),],
-        [InlineKeyboardButton(
-            text="Donate", url="https://ko-fi.com/Auramoon55"),
+            text="🎉 Updates", url="https://t.me/dabi_updates")
     ],
     [                    
         InlineKeyboardButton(
