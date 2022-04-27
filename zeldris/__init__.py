@@ -115,7 +115,7 @@ if ENV:
     PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
-    DB_URI = "postgres://lcxdmecj:m1DTxq9pIupZW06XLM4AN89xsNIcbGJe@castor.db.elephantsql.com/lcxdmecj"
+    DB_URI = "postgresql://lcxdmecj:m1DTxq9pIupZW06XLM4AN89xsNIcbGJe@castor.db.elephantsql.com/lcxdmecj"
     REDIS_URL = "redis://KawakiGod:KawakiGod64~@redis-12067.c285.us-west-2-2.ec2.cloud.redislabs.com:12067"
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY")
@@ -194,7 +194,7 @@ else:
     PORT = Config.PORT
     CERT_PATH = Config.CERT_PATH
 
-    DB_URI = "postgres://lcxdmecj:m1DTxq9pIupZW06XLM4AN89xsNIcbGJe@castor.db.elephantsql.com/lcxdmecj"
+    DB_URI = "postgresql://lcxdmecj:m1DTxq9pIupZW06XLM4AN89xsNIcbGJe@castor.db.elephantsql.com/lcxdmecj"
     REDIS_URL = "redis://KawakiGod:KawakiGod64~@redis-12067.c285.us-west-2-2.ec2.cloud.redislabs.com:12067"
     DONATION_LINK = Config.DONATION_LINK
     LOAD = Config.LOAD
