@@ -43,13 +43,13 @@ class Config(object):
          1242979521 # If you dont know, run the bot and do /id in your private chat with it
     )
     OWNER_USERNAME = "xd_dabi"
-    API_HASH = ""  # for purge stuffs
-    API_ID = 
+    API_HASH = "90dd95178a8d13a69bfdbc7da68d23a4"  # for purge stuffs
+    API_ID = 2919867
 
     # RECOMMENDED
     SQLALCHEMY_DATABASE_URI = "postgresql://xlzbhnyp:FVQzpp344W5yDcXc_cupZHy5qZoehDbN@castor.db.elephantsql.com/xlzbhnyp"  # needed for any database modules
     MESSAGE_DUMP = -1001501815938  # needed to make sure 'save from' messages persist
-    REDIS_URL = ""  # needed for afk module, get from redislab
+    REDIS_URL = "redis://KawakiGod:KawakiGod64~@redis-12067.c285.us-west-2-2.ec2.cloud.redislabs.com:12067"  # needed for afk module, get from redislab
     LOAD = []
     SUPPORT_CHAT = "Villainevil_support"  # Your own group for support, do not add the @
     NO_LOAD = []
