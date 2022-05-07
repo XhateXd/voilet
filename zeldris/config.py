@@ -38,13 +38,13 @@ class Config(object):
     LOGGER = True
 
     # REQUIRED
-    TOKEN = ""  # Take from @BotFather
+    TOKEN = "5092248582:AAFrpzaSLUN0gdEcmj4EAPb-d8rJ7C1ET1Y"  # Take from @BotFather
     OWNER_ID = (
-          # If you dont know, run the bot and do /id in your private chat with it
+         1242979521 # If you dont know, run the bot and do /id in your private chat with it
     )
-    OWNER_USERNAME = ""
-    API_HASH = None  # for purge stuffs
-    API_ID = None
+    OWNER_USERNAME = "xd_dabi"
+    API_HASH = ""  # for purge stuffs
+    API_ID = 
 
     # RECOMMENDED
     SQLALCHEMY_DATABASE_URI = "postgresql://xlzbhnyp:FVQzpp344W5yDcXc_cupZHy5qZoehDbN@castor.db.elephantsql.com/xlzbhnyp"  # needed for any database modules
