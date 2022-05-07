@@ -3,6 +3,7 @@ from Python_ARQ import ARQ
 from bs4 import BeautifulSoup
 import aiohttp
 import os
+import requests
 from random import randint
 import asyncio
 from PIL import Image
@@ -100,17 +101,15 @@ def wall(update, context):
         return
     else:
         try:
-            wall_list = asyncio.run(walld(q))
+            wall_list= requests.get(f"https://techzbotsapi.herokuapp.com/unsplash?query={q}")
         except:
             msg.reply_text("Error Occured!")
             return 
-        if not wall_list:
+        if wall_list["success"] != "True":
             msg.reply_text("No results found! Check your query.")
             return
         else:
-            index = randint(0, len(wall_list) - 1) 
-            wallpaper = wall_list[index]
-            url_w = wallpaper[0]
+            url_w = wall_list["images"][0]
             context.bot.send_photo(
                     chat_id,
                     photo=url_w,
