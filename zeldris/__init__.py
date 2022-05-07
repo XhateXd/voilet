@@ -139,7 +139,7 @@ if ENV:
     SPAMMERS = os.environ.get("SPAMMERS", None)
 
 else:
-    from zeldris.config import Development as Config
+    from zeldris.config import Config
 
     TOKEN = Config.TOKEN
     try:
